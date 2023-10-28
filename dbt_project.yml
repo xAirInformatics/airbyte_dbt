@@ -14,25 +14,25 @@ profile: 'normalize'
 # in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
 # docs-paths: ["docs"]
-analysis-paths: ["analysis"]
-test-paths: ["tests"]
+# analysis-paths: ["analysis"]
+# test-paths: ["tests"]
 # data-paths: ["data"]
-macro-paths: ["macros"]
+# macro-paths: ["macros"]
 
-target-path: "../build"  # directory which will store compiled SQL files
-log-path: "../logs"  # directory which will store DBT logs
-modules-path: "../dbt_modules"  # directory which will store external DBT dependencies
+# target-path: "../build"  # directory which will store compiled SQL files
+# log-path: "../logs"  # directory which will store DBT logs
+# modules-path: "../dbt_modules"  # directory which will store external DBT dependencies
 
-clean-targets:         # directories to be removed by `dbt clean`
-    - "build"
-    - "dbt_modules"
+# clean-targets:         # directories to be removed by `dbt clean`
+#     - "build"
+#     - "dbt_modules"
 
-quoting:
-  database: true
-# Temporarily disabling the behavior of the ExtendedNameTransformer on table/schema names, see (issue #1785)
-# all schemas should be unquoted
-  schema: false
-  identifier: true
+# quoting:
+#   database: true
+# # Temporarily disabling the behavior of the ExtendedNameTransformer on table/schema names, see (issue #1785)
+# # all schemas should be unquoted
+#   schema: false
+#   identifier: true
 
 # You can define configurations for models in the `source-paths` directory here.
 # Using these configurations, you can enable or disable models, change how they
@@ -40,13 +40,6 @@ quoting:
 models:
   airbyte_utils:
     generated:
-      airbyte_views:
-        +tags: airbyte_internal_views
-        +materialized: view
       airbyte_tables:
         +tags: normalized_tables
         +materialized: table
-    +materialized: table
-
-vars:
-  dbt_utils_dispatch_list: ['airbyte_utils']
